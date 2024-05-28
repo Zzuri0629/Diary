@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Diary Blog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: background-image 0.5s ease-in-out;
+        }
+        header {
+            background-color: rgba(51, 51, 51, 0.8);
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+        nav {
+            background-color: rgba(68, 68, 68, 0.8);
+            padding: 1rem;
+            text-align: center;
+        }
+        nav a {
+            color: #fff;
+            margin: 0 1rem;
+            text-decoration: none;
+        }
+        .container {
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.8);
+            max-width: 800px;
+            margin: auto;
+        }
+        footer {
+            background-color: rgba(51, 51, 51, 0.8);
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .entry-form {
+            background-color: #fff;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .entry-form input, .entry-form textarea {
+            width: 100%;
+            padding: 0.5rem;
+            margin: 0.5rem 0;
+            border: 1px solid #ddd;
+        }
+        .entry-form button {
+            background-color: #333;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border: none;
+            cursor: pointer;
+        }
+        .entry-form button:hover {
+            background-color: #555;
+        }
+        .char-count {
+            text-align: right;
+            font-size: 0.9rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>My Diary Blog</h1>
+    </header>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#new-entry">New Entry</a>
+    </nav>
+    <div class="container">
+        <section id="home">
+            <h2>Home</h2>
+            <p>Welcome to my diary blog. Here I share my daily thoughts and experiences.</p>
+        </section>
+        <section id="new-entry">
+            <h2>New Entry</h2>
+            <form class="entry-form">
+                <label for="entry-date">Date:</label>
+                <input type="date" id="entry-date" name="entry-date" required>
+                
+                <label for="entry-content">Entry:</label>
+                <textarea id="entry-content" name="entry-content" rows="10" oninput="updateCharCount()" required></textarea>
+                
+                <div class="char-count" id="char-count">Characters: 0</div>
+                
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </div>
+    <footer>
+        &copy; 2024 My Diary Blog
+    </footer>
+
+    <script>
+        function updateCharCount() {
+            const content = document.getElementById('entry-content').value;
+            const charCount = content.length;
+            document.getElementById('char-count').innerText = `Characters: ${charCount}`;
+        }
+
+        function setRandomBackground() {
+            const images = [
+                'https://source.unsplash.com/1600x900/?nature,water',
+                'https://source.unsplash.com/1600x900/?nature,forest',
+                'https://source.unsplash.com/1600x900/?nature,mountain',
+                'https://source.unsplash.com/1600x900/?nature,beach',
+                'https://source.unsplash.com/1600x900/?nature,sky'
+            ];
+            const randomImage = images[Math.floor(Math.random() * images.length)];
+            document.body.style.backgroundImage = `url(${randomImage})`;
+        }
+
+        window.onload = setRandomBackground;
+    </script>
+</body>
+</html>
